@@ -1,4 +1,3 @@
-# Homework2
 
 Created by: Darling Rodriguez & Lily Edelman
 For Comp333: Software Engineering
