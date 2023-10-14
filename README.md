@@ -6,3 +6,8 @@ For Comp333: Software Engineering
 
 ![phpmyadmin Interface](phpAdmin.png)
 
+#Database tables:
+
+![Users table](users_table.png)
+
+![Ratings table](ratings_table.png)
