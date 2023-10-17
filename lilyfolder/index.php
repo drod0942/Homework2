@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(!isset($_SESSION["logged"])){
+    header("Location: ../login.php");
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,33 +13,106 @@
     <title>User Dashboard</title>
 </head>
 <body>
-<h2>Add a Song</h2>
-    <form action="add_song.php" method="post">
-        <label>Title: <input type="text" name="title"></label>
-        <label>Artist: <input type="text" name="artist"></label>
-        <label>Rating: <input type="text" name="rating"></label>
-        <input type="submit" value="Add Song">
-    </form>
+    <p>You are logged in as user: 
+        <?php  
+            if(isset($_SESSION["user"])){
+                echo $_SESSION["user"];
+            }
+        ?></p>
+    <p><a href="logout.php">Log out</a></p>
+
+    <?php
+        if (isset($_SESSION["create"])) {
+            ?>
+            <div>
+                <?php
+                    echo $_SESSION["create"];
+                    unset($_SESSION["create"]);
+                ?>
+            </div>
+            <?php
+        }
+    ?>
+        <?php
+        if (isset($_SESSION["update"])) {
+            ?>
+            <div>
+                <?php
+                    echo $_SESSION["update"];
+                    unset($_SESSION["update"]);
+                ?>
+            </div>
+            <?php
+        }
+    ?>
+        <?php
+        if (isset($_SESSION["delete"])) {
+            ?>
+            <div>
+                <?php
+                    echo $_SESSION["delete"];
+                    unset($_SESSION["delete"]);
+                ?>
+            </div>
+            <?php
+        }
+    ?>
+
+<h1>Song Ratings</h1>
+
+
+<p><a href="add_song.php">Add New Song Rating</a></p>
     
     <h2>List of Songs</h2>
-    <iframe src="list_songs.php" width="400" height="200"></iframe>
     
-    <h2>Update Song</h2>
-    <form action="update_song.php" method="post">
-        <label>Existing Title: <input type="text" name="existing_title"></label>
-        <label>Existing Artist: <input type="text" name="existing_artist"></label>
-        <label>New Title: <input type="text" name="new_title"></label>
-        <label>New Artist: <input type="text" name="new_artist"></label>
-        <label>New Rating: <input type="text" name="new_rating"></label>
-        <input type="submit" value="Update Song">
-    </form>
+    <table border="1">
+        <thread>
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Artist</th>
+            <th>Song</th>
+            <th>Rating</th>
+            <th>Action</th>
+        </tr>
+        </thread>
+        <!-- Add table rows with data here -->
+        <tbody>
+            <?php
+            include("../database.php");
+            $sql = "SELECT * FROM ratings";
+            $result = mysqli_query($conn, $sql);
+            // Get the username of the currently logged-in user
+            $loggedInUser = $_SESSION["user"];
+            while($row = mysqli_fetch_array($result)){
+             ?>
+                <tr>
+                    <td><?php echo $row["id"] ?></td>
+                    <td><?php echo $row["username"] ?></td>
+                    <td><?php echo $row["artist"] ?></td>
+                    <td><?php echo $row["song"] ?></td>
+                    <td><?php echo $row["rating"] ?></td>
+                    <td>
+                        <a href="view_ratings.php?id=<?php echo $row["id"] ?>">View</a>
+                        <?php
+                            if ($loggedInUser == $row["username"]) {
+                        ?>
+                                <a href="update_rating.php?id=<?php echo $row["id"]?>">Update</a>
+                                <a href="delete_rating.php?id=<?php echo $row["id"]?>">Delete</a>
+                        <?php
+                            }
+                        ?>
+                    </td>
+                </tr>
+             <?php  
+            }
+
+            ?>
+        </tbody>
+
+        <!-- Add more rows as needed -->
+    </table>
     
-    <h2>Delete Song</h2>
-    <form action="delete_song.php" method="post">
-        <label>Title: <input type="text" name="title"></label>
-        <label>Artist: <input type="text" name="artist"></label>
-        <input type="submit" value="Delete Song">
-    </form>
 </body>
 </html>
 </body>
