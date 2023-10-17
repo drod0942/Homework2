@@ -1,3 +1,11 @@
+<?php
+session_start();
+if(isset($_SESSION["logged"])){
+    header("Location: ./lilyfolder/index.php");
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,7 +43,12 @@
             if ($user) {
                 // Now that we know username exists, check if password matches
                 if (password_verify($password, $user["password"])) {
-                    header("Location: index.php");
+
+                    //start a new session 
+                    session_start();
+                    $_SESSION["user"] = $username;
+                    $_SESSION["logged"] = "yes";
+                    header("Location: ./lilyfolder/index.php");
                     die();
                 } else {
                     echo "<div>Password doesn't match!</div>";

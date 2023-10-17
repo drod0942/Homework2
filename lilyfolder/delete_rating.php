@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(!isset($_SESSION["logged"])){
+    header("Location: ../login.php");
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -70,12 +77,35 @@
         <h1>Delete Rating</h1>
     </header>
     <div class="container">
+    <p>You are logged in as user: 
+        <?php  
+            if(isset($_SESSION["user"])){
+                echo $_SESSION["user"];
+            }
+        ?></p>
+    <p><a href="logout.php">Log out</a></p>
+        <?php
+        error_reporting(E_ALL);
+        ini_set('display_errors', 1);
+        include("../database.php");
+        if (isset($_POST['delete']) && isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $sql = "DELETE FROM ratings WHERE id=$id";
+            if (mysqli_query($conn, $sql)) {
+                $_SESSION["delete"] = "Song Rating Deleted Succesfully!";
+                header("Location: index.php");
+            }
+            
+        }
+        ?>
         <h1>Confirm Deletion</h1>
         <p>Are you sure you want to delete this rating?</p>
 
-        <div class="confirmation-box">
-            <p class="confirmation-message">Rating successfully deleted.</p>
-        </div>
+        <form action="delete_rating.php?id=<?php echo $_GET['id'] ?>" method="post">
+            <input type="submit" name="delete" value="Yes">
+            <a href="index.php">No</a>
+        </form>
+
 
         <div class="back-button">
             <a href="index.php">Back to Home</a>

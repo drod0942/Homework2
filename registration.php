@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(isset($_SESSION["logged"])){
+    header("Location: ./lilyfolder/index.php");
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,8 +34,8 @@
                     array_push($errors, "All fileds are required");
                 }
 
-                if (strlen($password) < 8) {
-                    array_push($errors, "Password must be at least 8 characters long");
+                if (strlen($password) < 10) {
+                    array_push($errors, "Password must be at least 10 characters long");
                 }
                 //checking if password match
                 if ($password != $passwordRepeat) {

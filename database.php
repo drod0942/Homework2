@@ -9,7 +9,7 @@ $dbName = "music_db";
 $conn = mysqli_connect($hostName, $dbUser, $dbPassword, $dbName);
 
 if (!$conn) {
-    die("SOmething Went Wrong...");
+    die("Something Went Wrong...");
 }
 
 ?>

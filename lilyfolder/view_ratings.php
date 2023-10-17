@@ -1,6 +1,10 @@
+<?php
+session_start();
+if(!isset($_SESSION["logged"])){
+    header("Location: ../login.php");
+}
 
-
-=======
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -74,13 +78,39 @@
         <h1>View Rating</h1>
     </header>
     <div class="container">
-        <h1>Product Name</h1>
-        <p>Description of the product goes here.</p>
+    <p>You are logged in as user: 
+        <?php  
+            if(isset($_SESSION["user"])){
+                echo $_SESSION["user"];
+            }
+        ?></p>
+        <p><a href="logout.php">Log out</a></p>
+        <?php
+            if (isset($_GET["id"])) {
+                $id = $_GET["id"];
+                include("../database.php");
+                $sql = "SELECT * FROM ratings WHERE id = $id";
+                $result = mysqli_query($conn, $sql);
+                $row = mysqli_fetch_array($result);
+        ?>
+                <p>Username: </p>
+                <h1><?php echo $row["username"];?></h1>
 
-        <div class="rating-container">
-            <p>Product Rating</p>
-            <span class="rating">4.5</span>
-        </div>
+                <p>Artist: </p>
+                <h1><?php echo $row["artist"];?></h1>
+                
+                <p>Song: </p>
+                <h1><?php echo $row["song"];?></h1>
+
+                <div class="rating-container">
+                    <p>Song Rating</p>
+                    <span class="rating"><?php echo $row["rating"];?></span>
+                </div>
+
+                <?php
+            }
+            
+        ?>
 
         <div class="back-button">
             <a href="index.php">Back to Home</a>
