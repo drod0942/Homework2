@@ -4,10 +4,10 @@ For Comp333: Software Engineering
 
 #Setting up the development environment
 
-![phpmyadmin Interface](phpAdmin.png)
+![phpmyadmin Interface](./images/phpAdmin.png)
 
 #Database tables:
 
-![Users table](users_table.png)
+![Users table](./images/users_table.png)
 
-![Ratings table](ratings_table.png)
+![Ratings table](./images/ratings_table.png)
