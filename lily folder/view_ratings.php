@@ -1,6 +1,3 @@
-
-
-=======
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -86,8 +83,5 @@
             <a href="index.php">Back to Home</a>
         </div>
     </div>
-    
 </body>
-
 </html>
-
