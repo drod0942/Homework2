@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View Rating</title>
+    <title>Delete Rating</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -37,14 +37,13 @@
             font-size: 18px;
         }
 
-        .rating-container {
+        .confirmation-box {
             text-align: center;
             margin-top: 20px;
         }
 
-        .rating {
-            font-size: 36px;
-            color: #ff9900;
+        .confirmation-message {
+            font-size: 20px;
         }
 
         .back-button {
@@ -68,22 +67,19 @@
 </head>
 <body>
     <header>
-        <h1>View Rating</h1>
+        <h1>Delete Rating</h1>
     </header>
     <div class="container">
-        <h1>Product Name</h1>
-        <p>Description of the product goes here.</p>
+        <h1>Confirm Deletion</h1>
+        <p>Are you sure you want to delete this rating?</p>
 
-        <div class="rating-container">
-            <p>Product Rating</p>
-            <span class="rating">4.5</span>
+        <div class="confirmation-box">
+            <p class="confirmation-message">Rating successfully deleted.</p>
         </div>
 
         <div class="back-button">
             <a href="index.php">Back to Home</a>
         </div>
     </div>
-    
 </body>
-
 </html>
