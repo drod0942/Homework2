@@ -12,6 +12,84 @@ if(isset($_SESSION["logged"])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
+    <style>
+        /* Adding styling to the body html document */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        h1 {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            margin: 0;
+        }
+
+        /* Adding styling to the overall container */
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-group {
+            margin: 10px 0;
+        }
+
+        /* Adding styling to the labels for each input typing box */
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* Adding styling to the login typing fields */
+        input[type="text"],
+        input[type="password"] {
+            width: 90%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        /* Adding styling to the form submit button */
+
+        input[type="submit"] {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #4CAF50;
+        }
+
+        .alert {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        .login-link {
+            text-align: center;
+        }
+
+        .login-link a {
+            text-decoration: none;
+            color: #333;
+        }
+    </style>
 </head>
 <body>
 <h1>Welcome to Music DB!</h1>
@@ -79,7 +157,7 @@ if(isset($_SESSION["logged"])){
             </div>
         </form>
     </div>
-    <p>Don't have an account? <a href="registration.php">Sign-Up Here</a></p>
+    <p class="login-link">Don't have an account? <a href="registration.php">Sign-Up Here</a></p>
 
 </body>
 </html>
