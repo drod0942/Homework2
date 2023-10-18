@@ -12,6 +12,78 @@ if(isset($_SESSION["logged"])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        h1 {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-group {
+            margin: 10px 0;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 90%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #4CAF50;
+        }
+
+        .alert {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        .login-link {
+            text-align: center;
+        }
+
+        .login-link a {
+            text-decoration: none;
+            color: #333;
+        }
+    </style>
 </head>
 <body>
     <h1>Music DB Sign Up!</h1>
@@ -105,7 +177,7 @@ if(isset($_SESSION["logged"])){
             </div>
         </form>
 
-        <p>Already have an account? <a href="login.php">Login Here</a></p>
+        <p class="login-link">Already have an account? <a href="login.php">Login Here</a></p>
     </div>
 </body>
 </html>
