@@ -11,16 +11,103 @@ if(!isset($_SESSION["logged"])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Dashboard</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        .upper-cont {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: right;
+        }
+
+        h1 {
+            color: black;
+            padding: 10px;
+        }
+
+        p {
+            margin: 0;
+            text-decoration: none;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .action-links a {
+            margin-right: 10px;
+            text-decoration: none;
+        }
+
+        .action-links a:hover {
+            color: #333;
+            background-color: #f2f2f2;
+        }
+
+        .success-message {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        .btn {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            display: inline-block;
+        }
+
+        .btn2{
+            float: right;
+            text-decoration: none; 
+            margin-right: 20px
+        }
+
+        .btn:hover {
+            background-color: #4CAF50;
+        }
+
+    </style>
 </head>
 <body>
-    <!-- Displays who is logged in -->
-    <p>You are logged in as user: 
+
+    <div class="upper-cont">
+        <!-- Displays who is logged in -->
+        <p style="float: left;">You are logged in as user: 
         <?php  
             if(isset($_SESSION["user"])){
                 echo $_SESSION["user"];
             }
         ?></p>
-    <p><a href="logout.php">Log out</a></p>
+        <a href="logout.php" class="btn">Log out</a>
+    </div>
+
 
     <!-- Displays Success Messages after creating, updating, and deleting data -->
     <?php
@@ -63,9 +150,9 @@ if(!isset($_SESSION["logged"])){
 <h1>Song Ratings</h1>
 
 
-<p><a href="add_song.php">Add New Song Rating</a></p>
+<p><a href="add_song.php" class="btn btn2">Add New Song Rating</a></p>
     
-    <h2>List of Songs</h2>
+    <h2 style="margin-left: 10px;">List of Songs</h2>
     
     <table border="1">
         <thread>
