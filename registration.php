@@ -1,9 +1,9 @@
+<!-- Checks whether a user is already logged in, if so, it throws them to index.php -->
 <?php
 session_start();
 if(isset($_SESSION["logged"])){
     header("Location: ./lilyfolder/index.php");
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,15 +19,21 @@ if(isset($_SESSION["logged"])){
     <p>Please fill in this form to sign up with us!</p>
     <div class="container">
         <?php
-        error_reporting(E_ALL);
-        ini_set('display_errors', 1);
+            //Catches any errors
+            error_reporting(E_ALL); 
+            ini_set('display_errors', 1);
+
+            // checks if submit button was clicked
             if(isset($_POST["submit"])){
                 $userName = $_POST["username"];
                 $password = $_POST["password"];
                 $passwordRepeat = $_POST["repeat_password"];
 
+                // Hashes the password so it is secure
                 $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
+                // Checks every case and sees if there are any errors
+                // If so, the form is cleared and the error is displayed
                 $errors = array();
 
                 if (empty($userName) OR empty($password) OR empty($passwordRepeat)) {
