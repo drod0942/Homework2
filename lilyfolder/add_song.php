@@ -11,6 +11,89 @@ if(!isset($_SESSION["logged"])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add a new song</title>
+    <style>
+        /* Adding styling to the body html document */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            color: black;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 24px;
+        }
+        /* Adding styling to the overall container */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        /* Adding styling to the labels for each input typing box */
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        /* Adding styling to the login typing fields */
+        input[type="text"],
+        input[type="number"] {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-btn {
+            text-align: center;
+        }
+
+        input[type="submit"] {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #555;
+        }
+
+        .back-button {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .back-button a {
+            text-decoration: none;
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        .back-button a:hover {
+            background-color: #555;
+        }
+    </style>
 </head>
 <body>
 <?php
@@ -70,7 +153,6 @@ if (isset($_POST["addSong"])) {
     <p><a href="logout.php">Log out</a></p>
     <header>
         <h1>Add a new song!</h1>
-        <p><a href="index.php">Go Back</a></p>
     </header>
     <form action="add_song.php" method="post">
 
@@ -94,8 +176,9 @@ if (isset($_POST["addSong"])) {
         </div>
 
     </form>
-
-
+    </div>
+    <div class="back-button">
+        <a href="index.php">Back to Home</a>
     </div>
 </body>
 </html>
