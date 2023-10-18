@@ -1,9 +1,9 @@
+<!-- Checks whether a user is not logged in, if so, they are thrown back to login -->
 <?php
 session_start();
 if(!isset($_SESSION["logged"])){
     header("Location: ../login.php");
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,6 +13,7 @@ if(!isset($_SESSION["logged"])){
     <title>User Dashboard</title>
 </head>
 <body>
+    <!-- Displays who is logged in -->
     <p>You are logged in as user: 
         <?php  
             if(isset($_SESSION["user"])){
@@ -21,6 +22,7 @@ if(!isset($_SESSION["logged"])){
         ?></p>
     <p><a href="logout.php">Log out</a></p>
 
+    <!-- Displays Success Messages after creating, updating, and deleting data -->
     <?php
         if (isset($_SESSION["create"])) {
             ?>
@@ -82,11 +84,14 @@ if(!isset($_SESSION["logged"])){
             include("../database.php");
             $sql = "SELECT * FROM ratings";
             $result = mysqli_query($conn, $sql);
+
             // Get the username of the currently logged-in user
             $loggedInUser = $_SESSION["user"];
+            
             while($row = mysqli_fetch_array($result)){
              ?>
                 <tr>
+                    <!-- Sets the Column names for the ratings table -->
                     <td><?php echo $row["id"] ?></td>
                     <td><?php echo $row["username"] ?></td>
                     <td><?php echo $row["artist"] ?></td>
@@ -94,6 +99,7 @@ if(!isset($_SESSION["logged"])){
                     <td><?php echo $row["rating"] ?></td>
                     <td>
                         <a href="view_ratings.php?id=<?php echo $row["id"] ?>">View</a>
+                        <!-- Only allows logged in users to edit and delete their own songs -->
                         <?php
                             if ($loggedInUser == $row["username"]) {
                         ?>
@@ -109,8 +115,6 @@ if(!isset($_SESSION["logged"])){
 
             ?>
         </tbody>
-
-        <!-- Add more rows as needed -->
     </table>
     
 </body>

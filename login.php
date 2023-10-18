@@ -1,9 +1,9 @@
+<!-- Checks whether a user is already logged in, if so, it throws them to index.php -->
 <?php
 session_start();
 if(isset($_SESSION["logged"])){
     header("Location: ./lilyfolder/index.php");
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -28,6 +28,8 @@ if(isset($_SESSION["logged"])){
 
         //check if login btn is pressed
         if (isset($_POST["login"])) {
+
+            // Gets input from the form submitted
             $username = $_POST["username"];
             $password = $_POST["password"];
 
@@ -58,6 +60,7 @@ if(isset($_SESSION["logged"])){
                 echo "<div>Username doesn't exist! Sign up now!</div>";
             }
         }
+        //Used minor AI help was used
 ?>
 
         <form action="login.php" method="post">
